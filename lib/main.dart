@@ -34,7 +34,7 @@ class StartRoute extends StatelessWidget {
           MainTile(
               Colors.blue[300], "Navigationbar", NavigationBarRoute(), context),
           MainTile(Colors.blue[400], "Layout", LayoutRoute(), context),
-          MainTile(Colors.blue[500], "Visit Card", VisitCardRoute, context)
+          MainTile(Colors.blue[500], "Visit Card", VisitCardRoute(), context)
         ],
       ),
     );

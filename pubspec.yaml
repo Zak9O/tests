@@ -55,6 +55,13 @@ flutter:
   assets:
     - assets/images/
 
+  fonts:
+    - family: PermanentMarker
+      fonts:
+        - asset: assets/fonts/permanent_marker.ttf
+    - family: SourceSansLight
+      fonts:
+        - asset: assets/fonts/source-sans-ligth.ttf
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
