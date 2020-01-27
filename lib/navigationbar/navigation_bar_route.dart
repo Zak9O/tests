@@ -11,7 +11,6 @@ class NavigationBarRoute extends StatefulWidget {
 
 class NavItem {
   NavItem(this.title, this.icon, this.isSelected);
-
   final String title;
   final IconData icon;
   bool isSelected;

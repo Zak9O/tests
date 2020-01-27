@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tests/dropdown_route.dart';
+import 'package:tests/layout/layout_route.dart';
 import 'package:tests/main_tile.dart';
 import 'package:tests/navigationbar/navigation_bar_route.dart';
 import 'package:tests/textField_route.dart';
+import 'package:tests/visit_card/visit_card_route.dart';
 
 void main() => runApp(MaterialApp(
       title: "Navigation Screen",
@@ -29,7 +31,10 @@ class StartRoute extends StatelessWidget {
               DropdownRoute(Colors.blue[100]), context),
           MainTile(Colors.blue[200], "Textfields and\ngetting userinput",
               TextFieldRoute(), context),
-          MainTile(Colors.blue[300], "Navigationbar", NavigationBarRoute(), context)
+          MainTile(
+              Colors.blue[300], "Navigationbar", NavigationBarRoute(), context),
+          MainTile(Colors.blue[400], "Layout", LayoutRoute(), context),
+          MainTile(Colors.blue[500], "Visit Card", VisitCardRoute, context)
         ],
       ),
     );
