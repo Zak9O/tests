@@ -13,8 +13,6 @@ class QuizzerRoute extends StatefulWidget {
 class _QuizzerRouteState extends State<QuizzerRoute> {
   QuizzerModel model = QuizzerModel();
 
-  int shownQuestion = 1; //The questions which is displayed on screem
-
   List<Icon> scoreTracker =
       List(); //The list which contains the score with the help of icons
 
@@ -33,7 +31,7 @@ class _QuizzerRouteState extends State<QuizzerRoute> {
           Expanded(
             child: Center(
               child: Text(
-                model.questions[shownQuestion].text,
+                model.getQuestionText(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 32.0,
@@ -79,7 +77,7 @@ class _QuizzerRouteState extends State<QuizzerRoute> {
   void submitAnswer(bool answer) {
     setState(() {
       //Checks if the answer is correct
-      if (answer == model.questions[shownQuestion].answer) {
+      if (answer == model.getQuestionAnswer()) {
         //If answer is correct add the corresponding icon
         scoreTracker.add(Icon(
           Icons.check,
@@ -93,14 +91,7 @@ class _QuizzerRouteState extends State<QuizzerRoute> {
         ));
       }
 
-      /*
-      A safe function that prevents the app from crashing due to overstepping the index of Questions
-       */
-      if (shownQuestion == model.questions.length - 1) {
-        shownQuestion = 1;
-      } else {
-        shownQuestion += 1;
-      }
+      model.nextQuestion();
     });
   }
 }
