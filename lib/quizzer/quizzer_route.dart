@@ -93,10 +93,10 @@ class _QuizzerRouteState extends State<QuizzerRoute> {
 
       //If the returned value is true, it means all of the questions have been showed
       if (model.nextQuestion()) {
-
         //Finds the icons in the scoreTracker which represents a correct answer
         int score = scoreTracker.where((test) {
-          if (test.icon == Icons.check) { //If Icons.check the icon represents a correct answer
+          if (test.icon == Icons.check) {
+            //If Icons.check the icon represents a correct answer
             return true;
           }
           return false;
