@@ -11,11 +11,14 @@ class QuizzerModel {
     return _questions[_questionNumber].answer;
   }
 
-  void nextQuestion() {
+  //Returns true if the quiz has ended
+  bool nextQuestion() {
     if (_questionNumber < _questions.length - 1) {
       _questionNumber++;
+      return false;
     } else {
       _questionNumber = 0;
+      return true;
     }
   }
 

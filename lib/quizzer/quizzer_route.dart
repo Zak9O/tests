@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:tests/quizzer/quizzer_model.dart';
 
 import 'my_button.dart';
@@ -73,7 +74,6 @@ class _QuizzerRouteState extends State<QuizzerRoute> {
     );
   }
 
-  //TODO: Create a popup message that informs the user if they answered correctly
   void submitAnswer(bool answer) {
     setState(() {
       //Checks if the answer is correct
@@ -91,7 +91,22 @@ class _QuizzerRouteState extends State<QuizzerRoute> {
         ));
       }
 
-      model.nextQuestion();
+      //If the returned value is true, it means all of the questions have been showed
+      if (model.nextQuestion()) {
+
+        //Finds the icons in the scoreTracker which represents a correct answer
+        int score = scoreTracker.where((test) {
+          if (test.icon == Icons.check) { //If Icons.check the icon represents a correct answer
+            return true;
+          }
+          return false;
+        }).length;
+        Alert(
+                context: context,
+                title: "You finished the quiz!",
+                desc: "You answered correctluy on $score questions")
+            .show();
+      }
     });
   }
 }
