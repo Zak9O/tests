@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tests/audio_player/audio_player_route.dart';
+import 'package:tests/destini/destini_route.dart';
 import 'package:tests/dice_game/dice_route.dart';
 import 'package:tests/drop_down/dropdown_route.dart';
 import 'package:tests/layout/layout_route.dart';
@@ -19,15 +20,16 @@ void main() => runApp(MaterialApp(
 
 ///Holds the routes corresponding to the titles
 final List<Tile> tiles = [
+  Tile("Destini", DestiniRoute()),
+  Tile("Quiz Game", QuizzerRoute()),
+  Tile("Audio Player", AudioPlayerRoute()),
+  Tile("Magiv Eightball", MagicEightballRoute()),
+  Tile("Dice Game", DiceRoute()),
+  Tile("Visit Card", VisitCardRoute()),
+  Tile("Layout", LayoutRoute()),
   Tile("Dropwdown", DropdownRoute(Colors.blue[100])),
   Tile("Textfields and\ngetting userinput", TextFieldRoute()),
   Tile("Navigationbar", NavigationBarRoute()),
-  Tile("Layout", LayoutRoute()),
-  Tile("Visit Card", VisitCardRoute()),
-  Tile("Dice Game", DiceRoute()),
-  Tile("Magiv Eightball", MagicEightballRoute()),
-  Tile("Audio Player", AudioPlayerRoute()),
-  Tile("Quiz Game", QuizzerRoute()),
 ];
 
 class StartRoute extends StatelessWidget {
