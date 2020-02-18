@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tests/audio_player/audio_player_route.dart';
+import 'package:tests/bmi_calculator/bmi_route.dart';
 import 'package:tests/destini/destini_route.dart';
 import 'package:tests/dice_game/dice_route.dart';
 import 'package:tests/drop_down/dropdown_route.dart';
@@ -20,6 +21,7 @@ void main() => runApp(MaterialApp(
 
 ///Holds the routes corresponding to the titles
 final List<Tile> tiles = [
+  Tile("BMI Calculator", BmiCalculator()),
   Tile("Destini", DestiniRoute()),
   Tile("Quiz Game", QuizzerRoute()),
   Tile("Audio Player", AudioPlayerRoute()),
