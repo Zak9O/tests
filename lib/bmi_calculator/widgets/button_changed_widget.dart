@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tests/bmi_calculator/round_icon_buton.dart';
+import 'package:tests/bmi_calculator/widgets/round_icon_buton.dart';
 
-import 'bmi_constants.dart';
+import '../bmi_constants.dart';
 
 class ButtonChangedWidget extends StatelessWidget {
   final Function button1Pressed;

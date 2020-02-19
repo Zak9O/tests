@@ -21,7 +21,7 @@ void main() => runApp(MaterialApp(
 
 ///Holds the routes corresponding to the titles
 final List<Tile> tiles = [
-  Tile("BMI Calculator", BmiCalculator()),
+  Tile("BMI Calculator", BmiRoute()),
   Tile("Destini", DestiniRoute()),
   Tile("Quiz Game", QuizzerRoute()),
   Tile("Audio Player", AudioPlayerRoute()),

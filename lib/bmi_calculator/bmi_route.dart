@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tests/bmi_calculator/button_changed_widget.dart';
-import 'package:tests/bmi_calculator/reusable_card.dart';
+import 'package:tests/bmi_calculator/bmi_brain.dart';
+import 'package:tests/bmi_calculator/widgets/button_changed_widget.dart';
+import 'package:tests/bmi_calculator/results_route.dart';
+import 'package:tests/bmi_calculator/widgets/reusable_card.dart';
 import 'bmi_constants.dart';
-import 'icon_content.dart';
+import 'widgets/icon_content.dart';
 
 //Enum used for identifying which icon where pressed
 enum Gender { male, female }
 
-class BmiCalculator extends StatefulWidget {
+class BmiRoute extends StatefulWidget {
   @override
-  _BmiCalculatorState createState() => _BmiCalculatorState();
+  _BmiRouteState createState() => _BmiRouteState();
 }
 
-class _BmiCalculatorState extends State<BmiCalculator> {
+class _BmiRouteState extends State<BmiRoute> {
   Gender selectedGender;
   int heightValue = 180;
   int weightValue = 60;
@@ -28,7 +30,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("BMI Calculator"),
+          title: Text("BMI CALCULATOR"),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -39,8 +41,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   Expanded(
                     child: ReusableCard(
                       color: selectedGender == Gender.male
-                          ? kReusableCardActiveColor
-                          : kReusableCardInactiveColor,
+                          ? kActiveColor
+                          : kInactiveColor,
                       onTap: () {
                         setState(() {
                           selectedGender = Gender.male;
@@ -55,8 +57,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   Expanded(
                     child: ReusableCard(
                       color: selectedGender == Gender.female
-                          ? kReusableCardActiveColor
-                          : kReusableCardInactiveColor,
+                          ? kActiveColor
+                          : kInactiveColor,
                       onTap: () {
                         setState(() {
                           selectedGender = Gender.female;
@@ -73,7 +75,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
             ),
             Expanded(
               child: ReusableCard(
-                color: kReusableCardActiveColor,
+                color: kActiveColor,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -126,7 +128,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      color: kReusableCardActiveColor,
+                      color: kActiveColor,
                       child: ButtonChangedWidget(
                         button1Icon: FontAwesomeIcons.minus,
                         button1Pressed: () {
@@ -148,7 +150,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   ),
                   Expanded(
                     child: ReusableCard(
-                      color: kReusableCardActiveColor,
+                      color: kActiveColor,
                       child: ButtonChangedWidget(
                         button1Icon: FontAwesomeIcons.minus,
                         button1Pressed: () {
@@ -171,21 +173,29 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 ],
               ),
             ),
-            Container(
-              color: kPinkColor,
-              width: double.infinity,
-              height: kBottomContainerHeight,
-              margin: EdgeInsets.only(top: kBottomContainerTopMargin),
-              child: Center(
-                child: Text(
-                  "CALCULATE MY BMI",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                    letterSpacing: 1.0,
-                    wordSpacing: 10.0,
+            GestureDetector(
+              onTap: () {
+                BMIBrain bmiBrain = BMIBrain(heightValue, weightValue);
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ResultsRoute(
+                    bmi: bmiBrain.calculateBMI(),
+                    bodyState: bmiBrain.determineBodyState(),
+                    interpretation: bmiBrain.createInterpretation(),
+                  );
+                }));
+              },
+              child: Container(
+                color: kPinkColor,
+                width: double.infinity,
+                height: kBottomContainerHeight,
+                margin: EdgeInsets.only(top: kBottomContainerTopMargin),
+                padding: EdgeInsets.only(bottom: 20.0),
+                child: Center(
+                  child: Text(
+                    "CALCULATE",
+                    textAlign: TextAlign.center,
+                    style: kLargeButtonTextStyle,
                   ),
                 ),
               ),
